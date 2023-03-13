@@ -18,31 +18,23 @@
     <script>
       fetch("data.json")
         .then((res) => res.json())
-        .then((data) => showData(data.data));
+        .then(() => showData(data));
 
       function showData(data) {
-        console.log(data);
         const container = document.getElementById("container");
         data.forEach((data) => {
           const div = `<div class="border-2 border-secondary p-5">
         <p>Name: ${data.name}</p>
         <br/>
-        <p>Age: ${data.age}</p>
+        <p>Age: ${data.agee}</p>
         <br/>
-        <p>Address: ${data.address ? data.address : "no address found"}</p>
+        <p>Address: ${data.address}</p>
         <br/>
         <ul>
             childrens:
-            ${
-              data.childrens
-                ? data.childrens
-                    .map((x) => {
-                      console.log(x);
-                      return `<p>${x.name}</p>`;
-                    })
-                    .join("")
-                : ""
-            }
+            ${data.childrens.map((x) => {
+              return `<p>${x.name}</p>`;
+            })}
         </ul>
       </div>`;
           container.innerHTML += div;
